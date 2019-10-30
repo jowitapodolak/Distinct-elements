@@ -35,6 +35,25 @@ public class DistinctElements {
         return result;
     }
 
+    public int rho(int x) {
+        // 2 base logarithm of x
+        int i = (int) (Math.log(x) / Math.log(2));
+        return i;
+    }
+
+    public double Z(int[] M, int m) {
+        int denominator = 0;
+        for (int i = 0; i < m; i++) {
+            denominator += (int)(Math.pow(2, -M[i]));
+        }
+        if (denominator != 0) return (1 / denominator);
+        else return -1.0;
+    }
+
+    public int E(int m, int Z) {
+        return (m*m*Z*0.7213/(1+1.079/m));
+    }
+
     public static void main(String[] args) {
         //106, . . . , 2 · 106 − 1 with 1 million distinct items: <= but maybe we don't need to have it? 
      
