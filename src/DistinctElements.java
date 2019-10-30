@@ -9,7 +9,11 @@ public class DistinctElements {
         this.x = x;
     }
 
-    public int calculateHashValue(int x){
+    /**
+     * Exercise 1.
+     * This method returns a integer hashcode for x using A matrix. 
+     */
+    public int calculateHashValue(){
 
         int result = 0;
         int pos = 31;
@@ -32,15 +36,40 @@ public class DistinctElements {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        while(sc.hasNextInt()){
-            int x = sc.nextInt();
-            // System.out.println("Input number: " + x);
-        
-            DistinctElements de = new DistinctElements(x);
-            // System.out.println("Hash value: " + de.calculateHashValue(x));
-            System.out.println(de.calculateHashValue(x));
+        //106, . . . , 2 · 106 − 1 with 1 million distinct items: <= but maybe we don't need to have it? 
+     
+        //exercise 2 ( m = 1024 and k = 32). Test the input on 106, . . . , 2 · 106 − 1 with 1 million distinct items: 
+        //How many distinct elements are reported by your implementation? (Add this number to your report.). It also needs to take 
+        HyperLogLogCounter counter = new HyperLogLogCounter(1024,32);
+        int n =counter.hyperLogLogCounter();
+        int threshold = counter.getThreshold(); 
+        if(n<=threshold){
+            System.out.println("above");
+        }else{
+            System.out.println("below");
         }
-    }
+        
+   }
 }
+
+
+
+
+
+
+
+//exercise 1 main
+   // public static void main(String[] args) {
+       // HyperLogLogCounter counter = new HyperLogLogCounter()
+        // Scanner sc = new Scanner(System.in);
+
+        // while(sc.hasNextInt()){
+        //     int x = sc.nextInt();
+        //     // System.out.println("Input number: " + x);
+        
+        //     DistinctElements de = new DistinctElements(x);
+        //     // System.out.println("Hash value: " + de.calculateHashValue(x));
+        //     System.out.println(de.calculateHashValue(x));
+        // }
+       
+    
