@@ -7,7 +7,7 @@ public class HyperLogLogCounter{
     int k; // 32
     int[] M;
     int noOfZeros;
-    DistinctElements de = new DistinctElements();
+    // DistinctElements de = new DistinctElements();
 
     HyperLogLogCounter(int m, int k){
         this.m = m;
@@ -107,7 +107,7 @@ public class HyperLogLogCounter{
         return dE;
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         
         int threshold = 0;
         HyperLogLogCounter counter = new HyperLogLogCounter(1024, 32);
@@ -138,5 +138,5 @@ public class HyperLogLogCounter{
         } else {
             System.out.println("above");
         }
-    } 
+    } */
 }
