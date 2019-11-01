@@ -7,7 +7,7 @@ public class HyperLogLogCounter{
     int k; // 32
     int[] M;
     int noOfZeros;
-    // DistinctElements de = new DistinctElements();
+    DistinctElements de = new DistinctElements();
 
     HyperLogLogCounter(int m, int k){
         this.m = m;
