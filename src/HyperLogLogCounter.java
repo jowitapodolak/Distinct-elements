@@ -68,7 +68,8 @@ public class HyperLogLogCounter{
         // h(y[i])
         int hashed = de.calculateHashValue(sequenceElement);
         // rho(h(y[i]))
-        int numberFromRho = getRho(hashed);
+        int numberFromRho = getRho(hashed);//ro(h(x)) <- plot
+        
         // M[j]:=max(M[j], rho(h(y[i])))
         if (M[j] == 0 && numberFromRho != 0) noOfZeros--;
         M[j] = Math.max(M[j], numberFromRho);
