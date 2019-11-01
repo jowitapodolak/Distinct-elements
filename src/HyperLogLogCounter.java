@@ -6,12 +6,14 @@ public class HyperLogLogCounter{
     int m; // power of 2, we want to store m integers in M array
     int k; // 32
     int[] M;
+    int noOfZeros;
     DistinctElements de = new DistinctElements();
 
     HyperLogLogCounter(int m, int k){
         this.m = m;
         this.k = k;
         this.M = new int[m]; // for i:=0 to m-1 do M[i]:=0
+        this.noOfZeros = m;
     }
 
 
@@ -37,13 +39,14 @@ public class HyperLogLogCounter{
 
     // get the number of zeros in M array
     public int getV(){
-        int V = 0;
+        /*int V = 0;
         for (int i = 0; i < M.length; i++){
             if (M[i] == 0) { 
                 V += 1;
             }
         }
-        return V;
+        return V;*/
+        return noOfZeros;
     }
 
     // get the position of the first 1 in the binary representation of int read from left
@@ -67,6 +70,7 @@ public class HyperLogLogCounter{
         // rho(h(y[i]))
         int numberFromRho = getRho(hashed);
         // M[j]:=max(M[j], rho(h(y[i])))
+        if (M[j] == 0 && numberFromRho != 0) noOfZeros--;
         M[j] = Math.max(M[j], numberFromRho);
         // System.out.println("from max M[j]: " + M[j]);
     }
